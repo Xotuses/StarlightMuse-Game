@@ -27,13 +27,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3023396495654566483}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 4.769, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1675757126584203999
 SpriteRenderer:
@@ -137,7 +137,7 @@ MonoBehaviour:
   rb: {fileID: 803614668928984164}
   bulletSpeed: 5
   bulletDamage: 1
-  bulletLifespan: 3
+  bulletLifespan: 2
 --- !u!50 &803614668928984164
 Rigidbody2D:
   serializedVersion: 4
