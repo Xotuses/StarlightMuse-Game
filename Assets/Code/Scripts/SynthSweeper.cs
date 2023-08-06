@@ -57,7 +57,6 @@ public class SynthSweeper : MonoBehaviour
 
         if (hits.Length > 0)
         {
-            Debug.Log("Hit");
             target = hits[0].transform;
         }
     }

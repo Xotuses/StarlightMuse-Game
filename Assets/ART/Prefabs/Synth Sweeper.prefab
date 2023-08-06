@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 3453507440112483178}
   - component: {fileID: 6948781103323798032}
   m_Layer: 0
-  m_Name: SynthSweeper 1
+  m_Name: Synth Sweeper
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3023396495654566483, guid: c1613bf1cb271664cae5c1e2000eeff6, type: 3}
   firingPoint: {fileID: 5625197712451325462}
   targetingRange: 3
-  rotationSpeed: 100
+  rotationSpeed: 200
   bps: 1
 --- !u!1 &6290112800141868470
 GameObject:

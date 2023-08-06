@@ -31,8 +31,6 @@ public class Bullet : MonoBehaviour
     {
         other.gameObject.GetComponent<Health>().TakeDamage(bulletDamage);
         Destroy(gameObject);
-        // CHANGES
-        Debug.Log("Bullet Destroyed!");
     }
 
     void Start() {

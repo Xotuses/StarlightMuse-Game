@@ -27,11 +27,18 @@ public class Plot : MonoBehaviour
     {
     if (tower != null) return; // If a tower is already on the plot, do not build another one
 
-    GameObject towerToBuild = BuildManager.main.GetSelectedTower();
+    Tower towerToBuild = BuildManager.main.GetSelectedTower();
     // Check if the player has enough resources and meets other requirements to build the tower
-    // Add your resource and requirement checks here
+    if (towerToBuild.cost > LevelManager.main.currency) {
+        Debug.Log("You can't afford this tower");
+        return;
+    }
+
+    LevelManager.main.SpendCurrency(towerToBuild.cost); 
+    // This will take the currency from the Level Manager
 
     // If the player meets all requirements, instantiate the towerToBuild
-    tower = Instantiate(towerToBuild, transform.position, Quaternion.identity);
+    tower = Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
     }
+
 }
