@@ -42,7 +42,6 @@ public class EnemySpawner : MonoBehaviour
         if (timeSinceLastSpawn >= (1f / enemiesPerSecond) && enemiesLeftToSpawn > 0)
         {
             SpawnEnemy();
-            Debug.Log("Enemy Spawned");
             enemiesLeftToSpawn--;
             enemiesAlive++;
             timeSinceLastSpawn = 0f;

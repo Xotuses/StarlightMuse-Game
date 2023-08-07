@@ -83,7 +83,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3023396495654566483, guid: c1613bf1cb271664cae5c1e2000eeff6, type: 3}
   firingPoint: {fileID: 5625197712451325462}
   targetingRange: 3
-  rotationSpeed: 200
+  rotationSpeed: 300
   bps: 1
 --- !u!1 &6290112800141868470
 GameObject:
