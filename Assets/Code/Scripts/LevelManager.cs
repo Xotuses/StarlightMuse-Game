@@ -16,7 +16,7 @@ public class LevelManager : MonoBehaviour
     }
 
     private void Start() { // sets currency to 100 upon pressing play
-        currency = 100; 
+        currency = 100;
     }
 
     public void IncreaseCurrency(int amount) { // Increase currency by the amount in the parameter
@@ -33,4 +33,5 @@ public class LevelManager : MonoBehaviour
             return false;
         }
     }
+    
 }

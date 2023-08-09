@@ -136,7 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 803614668928984164}
   bulletSpeed: 20
-  bulletDamage: 3
+  bulletDamage: 4
   bulletLifespan: 2
 --- !u!50 &803614668928984164
 Rigidbody2D:
