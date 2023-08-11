@@ -9,14 +9,16 @@ public class LevelManager : MonoBehaviour
     public Transform[] path; // This allows me to set the enemy path
 
     public int currency;
+    public int healthPoints;
 
     private void Awake()
     {
         main = this;
     }
 
-    private void Start() { // sets currency to 100 upon pressing play
+    private void Start() { // sets currency and health points to 100 upon pressing play
         currency = 100;
+        healthPoints = 100;
     }
 
     public void IncreaseCurrency(int amount) { // Increase currency by the amount in the parameter
@@ -25,7 +27,6 @@ public class LevelManager : MonoBehaviour
 
     public bool SpendCurrency(int amount) { // This is coding set up for the Tower Shop
         if (amount <= currency) {
-            // BUY ITEM
             currency -= amount;
             return true;
         } else {

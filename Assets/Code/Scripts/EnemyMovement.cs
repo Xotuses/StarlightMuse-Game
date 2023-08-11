@@ -19,27 +19,20 @@ public class EnemyMovement : MonoBehaviour
     private int pathIndex = 0; // keeps target of the place on the path
 
 
-    private void Start()
-    {
+    private void Start() {
         target = LevelManager.main.path[pathIndex]; 
     }
 
-    private void Update() // this will check the target
-    {
-        if (Vector2.Distance(target.position, transform.position) <= 0.1f) 
-            // Checks how far target postion is from transform position, if it is less or equal
-            // to 0.1.
-        {
+    private void Update() { // this will check the target 
+        if (Vector2.Distance(target.position, transform.position) <= 0.1f) { // Checks how far target postion is from transform position, if it is less or equal to 0.1.
             pathIndex++; // Increase pathIndex by 1
 
-            if (pathIndex == LevelManager.main.path.Length)
-            // this statement destroys the enemy once it reaches the end
-            {
+            if (pathIndex == LevelManager.main.path.Length) { // this statement destroys the enemy once it reaches the end
                 EnemySpawner.onEnemyDestroy.Invoke();
+                // LevelManager.main.healthPoints -= Health.hitPoints;
                 Destroy(gameObject);
                 return;
-            } else 
-            {
+            } else {
                 target = LevelManager.main.path[pathIndex]; // updates target 
             }
         }

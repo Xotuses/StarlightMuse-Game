@@ -39,14 +39,12 @@ public class EnemySpawner : MonoBehaviour
 
         timeSinceLastSpawn += Time.deltaTime;
 
-        if (timeSinceLastSpawn >= (1f / enemiesPerSecond) && enemiesLeftToSpawn > 0)
+        if (timeSinceLastSpawn >= (1f / enemiesPerSecond) && enemiesLeftToSpawn > 0) // This is the interval in which enemies spawn, 1 / 0.5 = 2 so the interval is 2 seconds.
         {
             SpawnEnemy();
             enemiesLeftToSpawn--;
             enemiesAlive++;
             timeSinceLastSpawn = 0f;
-            // This is the interval in which enemies spawn
-            // 1 / 0.5 = 2 so the interval is 2 seconds.
         }
 
         if (enemiesAlive == 0 && enemiesLeftToSpawn == 0)

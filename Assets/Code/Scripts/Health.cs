@@ -20,4 +20,8 @@ public class Health : MonoBehaviour
             Destroy(gameObject); 
         }
     }
+
+    public void healthDamage() {
+        LevelManager.main.healthPoints -= hitPoints;
+    }
 }
