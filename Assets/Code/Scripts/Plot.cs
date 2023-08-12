@@ -8,19 +8,23 @@ public class Plot : MonoBehaviour
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private Color hoverColor;
 
-    private GameObject tower;
+    private GameObject tower = null;
     private Color startColor;
+    private bool isMouseHovering = false;
+    private int assignedRefundCost;
 
     private void Start() {
         startColor = sr.color;
     }
 
     private void OnMouseEnter() {
+        isMouseHovering = true;
         sr.color = hoverColor;
     }
 
     private void OnMouseExit() {
         sr.color = startColor;
+        isMouseHovering = false;
     }
 
     private void OnMouseDown() {
@@ -37,8 +41,20 @@ public class Plot : MonoBehaviour
             LevelManager.main.SpendCurrency(towerToBuild.cost); 
             // This will take the currency from the Level Manager
 
+            assignedRefundCost = towerToBuild.refundCost;
+
             tower = Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
             // If the player meets all requirements, instantiate the towerToBuild
         }           
+    }
+
+    private void Update() { // This destroys tower on plot if there is a tower on hovered plot and refunds some of the spent currency
+        if (isMouseHovering) {
+            if (Input.GetKeyDown(KeyCode.D) && tower != null) {
+                LevelManager.main.IncreaseCurrency(assignedRefundCost);
+                Destroy(tower);
+                tower = null;
+            }
+        }
     }
 }

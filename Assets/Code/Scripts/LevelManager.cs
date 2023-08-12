@@ -17,7 +17,7 @@ public class LevelManager : MonoBehaviour
     }
 
     private void Start() { // sets currency and health points to 100 upon pressing play
-        currency = 100;
+        currency = 500;
         healthPoints = 100;
     }
 
