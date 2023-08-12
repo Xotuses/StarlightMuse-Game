@@ -437,12 +437,15 @@ MonoBehaviour:
   towers:
   - name: Synth Sweeper
     cost: 100
+    refundCost: 25
     prefab: {fileID: 4602729876275108803, guid: 280efd3641905434085ee1bc793e30d7, type: 3}
   - name: Bass Blaster
     cost: 50
+    refundCost: 0
     prefab: {fileID: 0}
   - name: Electro Eradicator
     cost: 150
+    refundCost: 40
     prefab: {fileID: 4602729876275108803, guid: 50f58b6861f17dd4382c5fe10132e644, type: 3}
 --- !u!114 &60614337
 MonoBehaviour:
