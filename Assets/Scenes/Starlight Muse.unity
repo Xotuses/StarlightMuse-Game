@@ -441,8 +441,8 @@ MonoBehaviour:
     prefab: {fileID: 4602729876275108803, guid: 280efd3641905434085ee1bc793e30d7, type: 3}
   - name: Bass Blaster
     cost: 50
-    refundCost: 0
-    prefab: {fileID: 0}
+    refundCost: 10
+    prefab: {fileID: 7512973189829871791, guid: e7f25c97f9e958948a222be51fff823a, type: 3}
   - name: Electro Eradicator
     cost: 150
     refundCost: 40

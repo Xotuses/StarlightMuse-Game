@@ -7,19 +7,16 @@ public class EnemyMovement : MonoBehaviour
     [Header ("References")]
     [SerializeField] private Rigidbody2D rb; // Allows me to move enemy
 
-        // Serialization in C# is the process of converting an object into a
-        // stream of bytes to store the object to memory, a database, or a file
-
-        // Using the SerializeField attribute causes Unity to serialize any private variable.
-
     [Header("Attributes")]
-    [SerializeField] private float moveSpeed = 2f; // Adjusts Movement Speed
+    [SerializeField] private float moveSpeed = 3f; // Adjusts Movement Speed
 
     private Transform target; // Sets the point we want to move to.
     private int pathIndex = 0; // keeps target of the place on the path
-
+    private float baseSpeed;
+    
 
     private void Start() {
+        baseSpeed = 3f;
         target = LevelManager.main.path[pathIndex]; 
     }
 
@@ -38,11 +35,18 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    private void FixedUpdate() // Moves Rigidbody
-    {
+    private void FixedUpdate() { // Moves Rigidbody  
         Vector2 direction = (target.position - transform.position).normalized;
         // normalized means that the value only goes between 0 and 1
-
+        
         rb.velocity = direction * moveSpeed; // our player will move onto the next element
+    }
+
+    public void UpdateSpeed(float newSpeed) { // Changes moveSpeed to the d
+        moveSpeed = newSpeed; 
+    }
+
+    public void ResetSpeed() { // Resets Speed to Default 
+        moveSpeed = baseSpeed;
     }
 }
