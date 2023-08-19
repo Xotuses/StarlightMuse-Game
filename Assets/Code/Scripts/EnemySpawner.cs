@@ -76,7 +76,9 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnEnemy()
     {
-        GameObject prefabToSpawn = enemyPrefabs[0];
+        int index = Random.Range(0, enemyPrefabs.Length);
+
+        GameObject prefabToSpawn = enemyPrefabs[index];
 
         Transform sp = null;
 

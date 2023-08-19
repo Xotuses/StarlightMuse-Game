@@ -8,7 +8,7 @@ public class BassBlaster : MonoBehaviour
     [Header("Attributes")]
     [SerializeField] private float targetingRange = 2f;
     [SerializeField] private float aps = 4f; // Bullets per Second
-    [SerializeField] private float slowTime = 1f;
+    [SerializeField] private float slowTime = 1.5f;
 
     [Header("Misc")]
     [SerializeField] private LayerMask enemyMask;
@@ -36,7 +36,7 @@ public class BassBlaster : MonoBehaviour
                 RaycastHit2D hit = hits[i];
 
                 EnemyMovement em = hit.transform.GetComponent<EnemyMovement>();
-                em.UpdateSpeed(0.5f);
+                em.UpdateSpeed(em.moveSpeed * 0.70f);
 
                 StartCoroutine(ResetEnemySpeed(em));
             }

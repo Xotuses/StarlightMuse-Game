@@ -8,15 +8,14 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb; // Allows me to move enemy
 
     [Header("Attributes")]
-    [SerializeField] private float moveSpeed = 3f; // Adjusts Movement Speed
+    [SerializeField] private float baseSpeed; // Adjusts Movement Speed
 
+    public float moveSpeed;
     private Transform target; // Sets the point we want to move to.
     private int pathIndex = 0; // keeps target of the place on the path
-    private float baseSpeed;
     
-
     private void Start() {
-        baseSpeed = 3f;
+        moveSpeed = baseSpeed;
         target = LevelManager.main.path[pathIndex]; 
     }
 

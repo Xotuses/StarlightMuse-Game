@@ -518,6 +518,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefabs:
   - {fileID: 6321105711023350062, guid: d5101f6d11e8b7340a19d46ace0f209f, type: 3}
+  - {fileID: 6321105711023350062, guid: d5101f6d11e8b7340a19d46ace0f209f, type: 3}
+  - {fileID: 6321105711023350062, guid: d5101f6d11e8b7340a19d46ace0f209f, type: 3}
+  - {fileID: 6321105711023350062, guid: 432eaeeefd01af949b0d086ff4413944, type: 3}
+  - {fileID: 6321105711023350062, guid: 432eaeeefd01af949b0d086ff4413944, type: 3}
+  - {fileID: 6321105711023350062, guid: a1a8fc3ad57334c488c39106ff4d6664, type: 3}
   baseEnemies: 8
   enemiesPerSecond: 1
   timeBetweenWaves: 5
@@ -6564,7 +6569,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 915222101}
-  pointValue: 0
 --- !u!50 &915222101
 Rigidbody2D:
   serializedVersion: 4
