@@ -522,6 +522,9 @@ MonoBehaviour:
   - {fileID: 6321105711023350062, guid: d5101f6d11e8b7340a19d46ace0f209f, type: 3}
   - {fileID: 6321105711023350062, guid: 432eaeeefd01af949b0d086ff4413944, type: 3}
   - {fileID: 6321105711023350062, guid: 432eaeeefd01af949b0d086ff4413944, type: 3}
+  - {fileID: 6321105711023350062, guid: 432eaeeefd01af949b0d086ff4413944, type: 3}
+  - {fileID: 6321105711023350062, guid: 65a0f162ab08d7c41aaf8f8a2b708a2c, type: 3}
+  - {fileID: 6321105711023350062, guid: 65a0f162ab08d7c41aaf8f8a2b708a2c, type: 3}
   - {fileID: 6321105711023350062, guid: a1a8fc3ad57334c488c39106ff4d6664, type: 3}
   baseEnemies: 8
   enemiesPerSecond: 1
@@ -12921,8 +12924,9 @@ MonoBehaviour:
   sounds:
   - name: BassBlast
     clip: {fileID: 8300000, guid: 843bef39f2f6e4c4985fc3a9466a1a5b, type: 3}
-    volume: 1
-    pitch: 0.1
+    volume: 0.5
+    pitch: 1
+    source: {fileID: 0}
 --- !u!1 &1995009708
 GameObject:
   m_ObjectHideFlags: 0

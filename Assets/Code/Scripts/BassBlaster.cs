@@ -37,7 +37,7 @@ public class BassBlaster : MonoBehaviour
 
                 EnemyMovement em = hit.transform.GetComponent<EnemyMovement>();
                 FindObjectOfType<AudioManager>().Play("BassBlast");
-                em.UpdateSpeed(em.moveSpeed * 0.70f);
+                em.UpdateSpeed(em.moveSpeed * 0.20f);
 
                 StartCoroutine(ResetEnemySpeed(em));
             }
