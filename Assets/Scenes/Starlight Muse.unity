@@ -12927,6 +12927,16 @@ MonoBehaviour:
     volume: 0.5
     pitch: 1
     source: {fileID: 0}
+  - name: ElectroCharge
+    clip: {fileID: 8300000, guid: 6d6db7aa0a1d3c74f914cee96f575cb8, type: 3}
+    volume: 0.25
+    pitch: 1
+    source: {fileID: 0}
+  - name: ElectroPulse
+    clip: {fileID: 8300000, guid: b6085bc0d26cb9a4c81f14beddb8f3b5, type: 3}
+    volume: 0.25
+    pitch: 1
+    source: {fileID: 0}
 --- !u!1 &1995009708
 GameObject:
   m_ObjectHideFlags: 0

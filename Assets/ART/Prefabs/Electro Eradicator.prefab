@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3453507440112483178}
-  - component: {fileID: 6948781103323798032}
+  - component: {fileID: 1599928931604812793}
   m_Layer: 0
   m_Name: Electro Eradicator
   m_TagString: Untagged
@@ -64,7 +64,7 @@ Transform:
   - {fileID: 4705081362763335562}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6948781103323798032
+--- !u!114 &1599928931604812793
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73,18 +73,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 4602729876275108803}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da3cbd34308cad345a59691e7ad7ce97, type: 3}
+  m_Script: {fileID: 11500000, guid: 121cf476499a6004da0be95a0625de71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  synthSweeperBody: {fileID: 4705081362763335562}
+  electroEradicatorBody: {fileID: 4705081362763335562}
   enemyMask:
     serializedVersion: 2
     m_Bits: 64
   bulletPrefab: {fileID: 3023396495654566483, guid: 912aab9fa407a634692dd3ec97c0df18, type: 3}
   firingPoint: {fileID: 5625197712451325462}
   targetingRange: 10
-  rotationSpeed: 100
-  bps: 0.15
+  rotationSpeed: 5
+  bps: 0.1
 --- !u!1 &6290112800141868470
 GameObject:
   m_ObjectHideFlags: 0
