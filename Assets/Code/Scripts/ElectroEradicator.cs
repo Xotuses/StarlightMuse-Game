@@ -49,7 +49,7 @@ public class ElectroEradicator : MonoBehaviour
         GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
         Bullet bulletScript = bulletObj.GetComponent<Bullet>();
         bulletScript.SetTarget(target);
-        FindObjectOfType<AudioManager>().Play("ElectroPulse");
+        FindObjectOfType<AudioManager>().Play("NeuroSound");
     }
 
     private void FindTarget()

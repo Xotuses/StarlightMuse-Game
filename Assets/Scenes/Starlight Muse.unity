@@ -516,20 +516,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54e638e163c54ff40b85b36c455b0b37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabs:
-  - {fileID: 6321105711023350062, guid: d5101f6d11e8b7340a19d46ace0f209f, type: 3}
-  - {fileID: 6321105711023350062, guid: d5101f6d11e8b7340a19d46ace0f209f, type: 3}
-  - {fileID: 6321105711023350062, guid: d5101f6d11e8b7340a19d46ace0f209f, type: 3}
-  - {fileID: 6321105711023350062, guid: 432eaeeefd01af949b0d086ff4413944, type: 3}
-  - {fileID: 6321105711023350062, guid: 432eaeeefd01af949b0d086ff4413944, type: 3}
-  - {fileID: 6321105711023350062, guid: 432eaeeefd01af949b0d086ff4413944, type: 3}
-  - {fileID: 6321105711023350062, guid: 65a0f162ab08d7c41aaf8f8a2b708a2c, type: 3}
-  - {fileID: 6321105711023350062, guid: 65a0f162ab08d7c41aaf8f8a2b708a2c, type: 3}
-  - {fileID: 6321105711023350062, guid: a1a8fc3ad57334c488c39106ff4d6664, type: 3}
   baseEnemies: 8
   enemiesPerSecond: 1
   timeBetweenWaves: 5
   difficultyScalingFactor: 0.75
+  waveDifficultyValue: 100
+  NormalList:
+  - {fileID: 6321105711023350062, guid: d5101f6d11e8b7340a19d46ace0f209f, type: 3}
+  - {fileID: 6321105711023350062, guid: d5101f6d11e8b7340a19d46ace0f209f, type: 3}
+  - {fileID: 6321105711023350062, guid: d5101f6d11e8b7340a19d46ace0f209f, type: 3}
+  - {fileID: 6321105711023350062, guid: d5101f6d11e8b7340a19d46ace0f209f, type: 3}
+  - {fileID: 6321105711023350062, guid: d5101f6d11e8b7340a19d46ace0f209f, type: 3}
+  AbnormalList:
+  - {fileID: 6321105711023350062, guid: 65a0f162ab08d7c41aaf8f8a2b708a2c, type: 3}
+  - {fileID: 6321105711023350062, guid: 65a0f162ab08d7c41aaf8f8a2b708a2c, type: 3}
+  - {fileID: 6321105711023350062, guid: 65a0f162ab08d7c41aaf8f8a2b708a2c, type: 3}
+  - {fileID: 6321105711023350062, guid: 65a0f162ab08d7c41aaf8f8a2b708a2c, type: 3}
+  - {fileID: 6321105711023350062, guid: 65a0f162ab08d7c41aaf8f8a2b708a2c, type: 3}
+  SpeedyList:
+  - {fileID: 6321105711023350062, guid: 432eaeeefd01af949b0d086ff4413944, type: 3}
+  - {fileID: 6321105711023350062, guid: 432eaeeefd01af949b0d086ff4413944, type: 3}
+  TankList:
+  - {fileID: 6321105711023350062, guid: a1a8fc3ad57334c488c39106ff4d6664, type: 3}
+  - {fileID: 6321105711023350062, guid: a1a8fc3ad57334c488c39106ff4d6664, type: 3}
+  - {fileID: 6321105711023350062, guid: a1a8fc3ad57334c488c39106ff4d6664, type: 3}
+  - {fileID: 6321105711023350062, guid: a1a8fc3ad57334c488c39106ff4d6664, type: 3}
+  Normal: {fileID: 6321105711023350062, guid: d5101f6d11e8b7340a19d46ace0f209f, type: 3}
+  Abnormal: {fileID: 6321105711023350062, guid: 65a0f162ab08d7c41aaf8f8a2b708a2c, type: 3}
+  Speedy: {fileID: 6321105711023350062, guid: 432eaeeefd01af949b0d086ff4413944, type: 3}
+  Tank: {fileID: 6321105711023350062, guid: a1a8fc3ad57334c488c39106ff4d6664, type: 3}
 --- !u!1001 &63466306
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12927,14 +12942,9 @@ MonoBehaviour:
     volume: 0.5
     pitch: 1
     source: {fileID: 0}
-  - name: ElectroCharge
-    clip: {fileID: 8300000, guid: 6d6db7aa0a1d3c74f914cee96f575cb8, type: 3}
-    volume: 0.25
-    pitch: 1
-    source: {fileID: 0}
-  - name: ElectroPulse
-    clip: {fileID: 8300000, guid: b6085bc0d26cb9a4c81f14beddb8f3b5, type: 3}
-    volume: 0.25
+  - name: NeuroSound
+    clip: {fileID: 8300000, guid: 55caba33a0285f24eb74f301431dd18b, type: 3}
+    volume: 0.6
     pitch: 1
     source: {fileID: 0}
 --- !u!1 &1995009708
@@ -14053,8 +14063,8 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1983469462}
-  - {fileID: 68461974}
   - {fileID: 60614338}
+  - {fileID: 68461974}
   - {fileID: 1145468732}
   - {fileID: 2010575934}
   - {fileID: 763190284}

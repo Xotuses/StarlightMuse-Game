@@ -6,14 +6,16 @@ public class Health : MonoBehaviour
 {
     [Header("Attributes")]
     [SerializeField] private int hitPoints = 2;
-    [SerializeField] private int currencyWorth = 50; // To be changed depending on enemy difficulty
+    [SerializeField] private int currencyWorth = 50; 
 
     private bool isDestroyed = false;
 
-    public void TakeDamage(int dmg) {
+    public void TakeDamage(int dmg) 
+    {
         hitPoints -= dmg;
 
-        if (hitPoints <= 0 && !isDestroyed) {
+        if (hitPoints <= 0 && !isDestroyed) 
+        {
             EnemySpawner.onEnemyDestroy.Invoke();
             LevelManager.main.IncreaseCurrency(currencyWorth); // Increase the currency the player has by 50 when the enemy is destroyed
             isDestroyed = true;
@@ -21,7 +23,8 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void healthDamage() {
+    public void HealthDamage() 
+    {
         LevelManager.main.healthPoints -= hitPoints;
     }
 }

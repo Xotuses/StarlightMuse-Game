@@ -81,7 +81,7 @@ public class SynthSweeper : MonoBehaviour
     synthSweeperBody.rotation = Quaternion.RotateTowards(synthSweeperBody.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmosSelected() // Draws Gizmos to allow me to see the range
     {
         Handles.color = Color.cyan;
         Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
