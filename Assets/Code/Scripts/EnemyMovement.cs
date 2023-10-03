@@ -32,7 +32,8 @@ public class EnemyMovement : MonoBehaviour
                 Destroy(gameObject);
                 return;
 
-            } else 
+            } 
+            else 
             { 
                 target = LevelManager.main.path[pathIndex]; // updates target 
             }

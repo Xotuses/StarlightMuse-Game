@@ -16,20 +16,26 @@ public class LevelManager : MonoBehaviour
         main = this;
     }
 
-    private void Start() { // sets currency and health points to 100 upon pressing play
-        currency = 500;
+    private void Start() // sets currency and health points to 100 upon pressing play
+    { 
+        currency = 2500;
         healthPoints = 100;
     }
 
-    public void IncreaseCurrency(int amount) { // Increase currency by the amount in the parameter
+    public void IncreaseCurrency(int amount) // Increase currency by the amount in the parameter
+    { 
         currency += amount;
     }
 
-    public bool SpendCurrency(int amount) { // This is coding set up for the Tower Shop
-        if (amount <= currency) {
+    public bool SpendCurrency(int amount) // This is coding set up for the Tower Shop
+    { 
+        if (amount <= currency) 
+        {
             currency -= amount;
             return true;
-        } else {
+        } 
+        else 
+        {
             Debug.Log("You do not have enough Stariam to purchase this item");
             return false;
         }
