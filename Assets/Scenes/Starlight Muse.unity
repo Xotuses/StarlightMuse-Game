@@ -518,11 +518,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseEnemies: 8
-  baseBossEnemies: 1
+  baseBossEnemies: 0.4
   baseSubBossEnemies: 1
   enemiesPerSecond: 1
   timeBetweenWaves: 5
-  difficultyScalingFactor: 0.5
+  difficultyScalingFactor: 0.75
   NormalList:
   - {fileID: 6321105711023350062, guid: d5101f6d11e8b7340a19d46ace0f209f, type: 3}
   - {fileID: 6321105711023350062, guid: d5101f6d11e8b7340a19d46ace0f209f, type: 3}
@@ -543,7 +543,7 @@ MonoBehaviour:
   - {fileID: 6321105711023350062, guid: a1a8fc3ad57334c488c39106ff4d6664, type: 3}
   - {fileID: 6321105711023350062, guid: a1a8fc3ad57334c488c39106ff4d6664, type: 3}
   - {fileID: 6321105711023350062, guid: a1a8fc3ad57334c488c39106ff4d6664, type: 3}
-  SubBoss1List:
+  SubBossList:
   - {fileID: 6321105711023350062, guid: 30205180676ac8446bc93bc495537c54, type: 3}
   - {fileID: 6321105711023350062, guid: 30205180676ac8446bc93bc495537c54, type: 3}
   BossList:
@@ -552,6 +552,9 @@ MonoBehaviour:
   Abnormal: {fileID: 6321105711023350062, guid: 65a0f162ab08d7c41aaf8f8a2b708a2c, type: 3}
   Speedy: {fileID: 6321105711023350062, guid: 432eaeeefd01af949b0d086ff4413944, type: 3}
   Tank: {fileID: 6321105711023350062, guid: a1a8fc3ad57334c488c39106ff4d6664, type: 3}
+  HighCut: {fileID: 6321105711023350062, guid: 30205180676ac8446bc93bc495537c54, type: 3}
+  BandPass: {fileID: 6321105711023350062, guid: 26f1ec544bb707e48808c0fbeba77713, type: 3}
+  LowCut: {fileID: 6321105711023350062, guid: 46f9fbb858e129947b6bbb0bad7e98f2, type: 3}
 --- !u!114 &60614340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -565,7 +568,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausedMenu: {fileID: 449839397}
-  IsPaused: 0
 --- !u!1001 &63466306
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7152,7 +7154,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 250}
+  m_AnchoredPosition: {x: 0, y: 319.4}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &926668217
@@ -7198,7 +7200,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 926668218}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 60614340}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: QuitToStartingScreen
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &926668218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9005,9 +9019,9 @@ RectTransform:
   - {fileID: 1764956696}
   m_Father: {fileID: 449839398}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 450}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1191318517

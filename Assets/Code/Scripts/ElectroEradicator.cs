@@ -69,22 +69,16 @@ public class ElectroEradicator : MonoBehaviour
 
     private void RotateTowardsTarget()
     {
-    // Calculates the direction vector from the SynthSweeper's position to the target's position.
-    Vector3 direction = target.position - transform.position;
+        // Calculates the direction vector from the SynthSweeper's position to the target's position.
+        Vector3 direction = target.position - transform.position;
 
-    // Calculates the angle in degrees based on the direction vector.
-    float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        // Calculates the angle in degrees based on the direction vector.
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-    // Creates a quaternion representing the desired rotation around the Z-axis.
-    Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+        // Creates a quaternion representing the desired rotation around the Z-axis.
+        Quaternion targetRotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
 
-    // Applys the target rotation to the SynthSweeper's body.
-    electroEradicatorBody.rotation = Quaternion.RotateTowards(electroEradicatorBody.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Handles.color = Color.cyan;
-        Handles.DrawWireDisc(transform.position, transform.forward, targetingRange);
+        // Applys the target rotation to the SynthSweeper's body.
+        electroEradicatorBody.rotation = Quaternion.RotateTowards(electroEradicatorBody.rotation, targetRotation, rotationSpeed * Time.deltaTime);
     }
 }

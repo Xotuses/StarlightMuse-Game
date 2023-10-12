@@ -8,7 +8,7 @@ public class EnemySpawner : MonoBehaviour
 {
     [Header("Attributes")]
     [SerializeField] private int baseEnemies = 8; // Sets amount of enemies
-    [SerializeField] private float baseBossEnemies = 0.5f; // Sets amount of Boss enemies
+    [SerializeField] private float baseBossEnemies = 0.4f; // Sets amount of Boss enemies
     [SerializeField] private int baseSubBossEnemies = 1; // Sets amount of Sub Boss enemies
     [SerializeField] private float enemiesPerSecond = 0.5f; // Sets speed in which enemies spawn
     [SerializeField] private float timeBetweenWaves = 5f; // Sets Prep time 
@@ -22,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private List<GameObject> AbnormalList;
     [SerializeField] private List<GameObject> SpeedyList;
     [SerializeField] private List<GameObject> TankList;
-    [SerializeField] private List<GameObject> SubBoss1List;
+    [SerializeField] private List<GameObject> SubBossList;
     [SerializeField] private List<GameObject> BossList;
 
     [Header("Enemy Types")] // Used to add more objects to the lists, increasing percentage to spawn the desired enemy
@@ -31,7 +31,12 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject Speedy;
     [SerializeField] private GameObject Tank;
 
-    public static int currentWave = 40;
+    [Header("Sub Boss Types")] 
+    [SerializeField] private GameObject HighCut;
+    [SerializeField] private GameObject BandPass;
+    [SerializeField] private GameObject LowCut;
+
+    public static int currentWave = 30;
     private float timeSinceLastSpawn;
     private int enemiesAlive;
     private int enemiesLeftToSpawn;
@@ -39,10 +44,10 @@ public class EnemySpawner : MonoBehaviour
     GameObject[] WaveArray;
     private bool isMultipleOfTen;
     private bool isMultipleOfForty;
-    
+
     private void Awake()
     {
-        onEnemyDestroy.AddListener(EnemyDestroyed);
+        onEnemyDestroy?.AddListener(EnemyDestroyed);
     }
 
     private void Start()
@@ -80,6 +85,7 @@ public class EnemySpawner : MonoBehaviour
         yield return new WaitForSeconds(timeBetweenWaves); // Interval before the wave starts
 
         isSpawning = true;
+        EnemyPercentageToSpawn(currentWave);
         CheckIfMultipleOfTenAndForty(); 
         enemiesLeftToSpawn = EnemiesPerWave;
     }
@@ -94,13 +100,12 @@ public class EnemySpawner : MonoBehaviour
         
         StartCoroutine(StartWave());
 
-        EnemyPercentageToSpawn(currentWave);
-
         string result = "Array contents: "; // Shows me what was inside the concatinated array (debugging purposes)
         foreach (var item in WaveArray)
         {
             result += item.ToString() + ", ";
         }
+        
         Debug.Log(result);
     }
 
@@ -122,7 +127,7 @@ public class EnemySpawner : MonoBehaviour
 
                 if (isMultipleOfTen)
                 {
-                    WaveArray = SubBoss1List.ToArray(); // Changes enemy types to sub boss enemys
+                    WaveArray = SubBossList.ToArray(); // Changes enemy types to sub boss enemys
 
                     int index = Random.Range(0, WaveArray.Length);
                     prefabToSpawn = WaveArray[index];
@@ -155,11 +160,33 @@ public class EnemySpawner : MonoBehaviour
             if (currentWave <= 5)
             {
                 SpeedyList.Add(Speedy);
+                // Increase chances of speedy enemies spawning
             }
 
             if (currentWave < 10 && currentWave > 6) 
             {
-                AbnormalList.Add(Abnormal);
+                AbnormalList.Add(Abnormal); 
+                // Increases chances of abnormals spawning
+            }
+
+            if (currentWave == 20)
+            {
+                var totalSubBosses = SubBossList.Count;
+                
+                for (int i = 0; i < totalSubBosses; i++) 
+                {
+                    SubBossList.Add(BandPass);
+                }
+            }
+
+            if (currentWave == 30)
+            {
+                var totalSubBosses = SubBossList.Count;
+
+                for (int i = 0; i < totalSubBosses; i++) 
+                {
+                    SubBossList.Add(LowCut);
+                }
             }
         }
     }

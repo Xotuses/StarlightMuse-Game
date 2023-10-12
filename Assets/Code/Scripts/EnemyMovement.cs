@@ -53,7 +53,8 @@ public class EnemyMovement : MonoBehaviour
         moveSpeed = newSpeed; 
     }
 
-    public void ResetSpeed() { // Resets Speed to Default 
+    public void ResetSpeed() // Resets Speed to Default 
+    { 
         moveSpeed = baseSpeed;
     }
 }

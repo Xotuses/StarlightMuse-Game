@@ -12,7 +12,8 @@ public class Menu : MonoBehaviour
     public static bool isOnMenu = true;
     private bool isMenuOpen = true;
 
-    public void ToggleMenu() {
+    public void ToggleMenu() 
+    {
         isMenuOpen = !isMenuOpen;
         // Defines Boolean Value
 
@@ -22,7 +23,8 @@ public class Menu : MonoBehaviour
         // Reassigns Boolean Value based on animation
     }
 
-    private void OnGUI() {
+    private void OnGUI() 
+    {
         currencyUI.text = LevelManager.main.currency.ToString();
         // Displays currency on Menu
     }
