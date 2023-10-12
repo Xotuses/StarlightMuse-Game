@@ -9,8 +9,13 @@ public class WaveCounter : MonoBehaviour
     [SerializeField] TextMeshProUGUI WaveValueUI;
     [SerializeField] TextMeshProUGUI LiveValueUI;
 
-    private void OnGUI() {
-        WaveValueUI.text = EnemySpawner.currentWave.ToString();
-        LiveValueUI.text = LevelManager.main.healthPoints.ToString();
+    private void OnGUI()
+    {
+        if (WaveValueUI != null && LiveValueUI != null)
+        {
+            WaveValueUI.text = EnemySpawner.currentWave.ToString();
+            LiveValueUI.text = LevelManager.healthPoints.ToString();
+        }
+        
     }
 }

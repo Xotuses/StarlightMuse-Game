@@ -20,7 +20,7 @@ public class Plot : MonoBehaviour
 
     private void OnMouseEnter() 
     {
-        if (!PauseMenu.IsPaused)
+        if (!PauseMenu.IsPaused && !ConditionsForGameplay.isOnVictoryScreen)
         {
             isMouseHovering = true;
             sr.color = hoverColor;
@@ -29,7 +29,7 @@ public class Plot : MonoBehaviour
 
     private void OnMouseExit() 
     {
-        if (!PauseMenu.IsPaused)
+        if (!PauseMenu.IsPaused && !ConditionsForGameplay.isOnVictoryScreen)
         {
             sr.color = startColor;
             isMouseHovering = false;
@@ -38,7 +38,7 @@ public class Plot : MonoBehaviour
 
     private void OnMouseDown() 
     {
-        if (!PauseMenu.IsPaused)
+        if (!PauseMenu.IsPaused && !ConditionsForGameplay.isOnVictoryScreen)
         {
             if (!Menu.isOnMenu)
             {
@@ -67,7 +67,7 @@ public class Plot : MonoBehaviour
 
     private void Update() // This destroys tower on plot if there is a tower on hovered plot and refunds some of the spent currency
     {
-        if (!PauseMenu.IsPaused)
+        if (!PauseMenu.IsPaused && !ConditionsForGameplay.isOnVictoryScreen)
         {
             if (isMouseHovering)
             {

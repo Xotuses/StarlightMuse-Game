@@ -25,6 +25,6 @@ public class Health : MonoBehaviour
 
     public void HealthDamage() 
     {
-        LevelManager.main.healthPoints -= hitPoints;
+        LevelManager.healthPoints -= hitPoints;
     }
 }

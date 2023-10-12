@@ -7,12 +7,12 @@ using UnityEngine.Events;
 public class EnemySpawner : MonoBehaviour
 {
     [Header("Attributes")]
-    [SerializeField] private int baseEnemies = 8; // Sets amount of enemies
-    [SerializeField] private float baseBossEnemies = 0.4f; // Sets amount of Boss enemies
-    [SerializeField] private int baseSubBossEnemies = 1; // Sets amount of Sub Boss enemies
-    [SerializeField] private float enemiesPerSecond = 0.5f; // Sets speed in which enemies spawn
-    [SerializeField] private float timeBetweenWaves = 5f; // Sets Prep time 
-    [SerializeField] private float difficultyScalingFactor = 0.75f; // Quicker or more enemies that spawn
+    [SerializeField] private int baseEnemies; // Sets amount of enemies
+    [SerializeField] private float baseBossEnemies; // Sets amount of Boss enemies
+    [SerializeField] private int baseSubBossEnemies; // Sets amount of Sub Boss enemies
+    [SerializeField] private float enemiesPerSecond; // Sets speed in which enemies spawn
+    [SerializeField] private float timeBetweenWaves; // Sets Prep time 
+    [SerializeField] private float difficultyScalingFactor; // Quicker or more enemies that spawn
 
     [Header("Events")]
     public static UnityEvent onEnemyDestroy = new();
@@ -36,14 +36,17 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject BandPass;
     [SerializeField] private GameObject LowCut;
 
-    public static int currentWave = 30;
+    public static int currentWave = 11;
     private float timeSinceLastSpawn;
-    private int enemiesAlive;
+    public static int enemiesAlive;
     private int enemiesLeftToSpawn;
     private bool isSpawning = false;
-    GameObject[] WaveArray;
     private bool isMultipleOfTen;
     private bool isMultipleOfForty;
+
+    GameObject[] WaveArray;
+    GameObject[] WaveArrayForConcat1;
+    GameObject[] WaveArrayForConcat2;
 
     private void Awake()
     {
@@ -88,6 +91,7 @@ public class EnemySpawner : MonoBehaviour
         EnemyPercentageToSpawn(currentWave);
         CheckIfMultipleOfTenAndForty(); 
         enemiesLeftToSpawn = EnemiesPerWave;
+        Debug.Log(EnemiesPerWave);
     }
 
     public void EndWave()
@@ -99,14 +103,6 @@ public class EnemySpawner : MonoBehaviour
         currentWave++;
         
         StartCoroutine(StartWave());
-
-        string result = "Array contents: "; // Shows me what was inside the concatinated array (debugging purposes)
-        foreach (var item in WaveArray)
-        {
-            result += item.ToString() + ", ";
-        }
-        
-        Debug.Log(result);
     }
 
     private void SpawnEnemy() // This is the function containing all the conditions to spawn specific arrays depending on the wave
@@ -120,6 +116,15 @@ public class EnemySpawner : MonoBehaviour
                 if (!isMultipleOfTen && !isMultipleOfForty)
                 {
                     WaveArray = NormalList.Concat(SpeedyList).ToArray(); // Combines Arrays, 50/50 chance to spawn Normal or Speedy
+
+                    int index = Random.Range(0, WaveArray.Length);
+                    prefabToSpawn = WaveArray[index];
+                }
+
+                if (currentWave >= 11 && currentWave <= 19)
+                {
+                    WaveArrayForConcat1 = NormalList.Concat(SpeedyList).ToArray(); // Combines Arrays, 50/50 chance to spawn Normal or Speedy
+                    WaveArray = WaveArrayForConcat1.Concat(AbnormalList).ToArray(); // Introduces Abnormal enemy type to enemy pool
 
                     int index = Random.Range(0, WaveArray.Length);
                     prefabToSpawn = WaveArray[index];
@@ -140,6 +145,16 @@ public class EnemySpawner : MonoBehaviour
                     int index = Random.Range(0, WaveArray.Length);
                     prefabToSpawn = WaveArray[index];
                 }
+            }
+
+            if (currentWave > 40)
+            {
+                WaveArrayForConcat1 = NormalList.Concat(SpeedyList).ToArray();
+                WaveArrayForConcat2 = AbnormalList.Concat(TankList).ToArray();
+                WaveArray = WaveArrayForConcat1.Concat(WaveArrayForConcat2).ToArray(); // Concatinates all normal enemy types into the wave array
+
+                int index = Random.Range(0, WaveArray.Length);
+                prefabToSpawn = WaveArray[index];
             }
         }
 
@@ -163,7 +178,7 @@ public class EnemySpawner : MonoBehaviour
                 // Increase chances of speedy enemies spawning
             }
 
-            if (currentWave < 10 && currentWave > 6) 
+            if (currentWave > 10 && currentWave < 20) 
             {
                 AbnormalList.Add(Abnormal); 
                 // Increases chances of abnormals spawning
@@ -176,6 +191,7 @@ public class EnemySpawner : MonoBehaviour
                 for (int i = 0; i < totalSubBosses; i++) 
                 {
                     SubBossList.Add(BandPass);
+                    // Increases chances of Bandpasses spawning for every boss type in the list
                 }
             }
 
@@ -186,6 +202,7 @@ public class EnemySpawner : MonoBehaviour
                 for (int i = 0; i < totalSubBosses; i++) 
                 {
                     SubBossList.Add(LowCut);
+                    // Increases chances of LowCut spawning for every boss type in the list
                 }
             }
         }
@@ -193,15 +210,6 @@ public class EnemySpawner : MonoBehaviour
 
     private void CheckIfMultipleOfTenAndForty() // Checks if the current wave is divisible by 10 or 40
     {
-        if (currentWave % 10 == 0)
-        {
-            isMultipleOfTen = true;
-        } 
-        else
-        {
-            isMultipleOfTen = false;
-        }
-
         if (currentWave % 40 == 0)
         {
             isMultipleOfForty = true;
@@ -209,6 +217,18 @@ public class EnemySpawner : MonoBehaviour
         else
         {
             isMultipleOfForty = false;
+        }
+
+        if (!isMultipleOfForty)
+        {
+            if (currentWave % 10 == 0)
+            {
+                isMultipleOfTen = true;
+            }
+            else
+            {
+                isMultipleOfTen = false;
+            }
         }
     }
 
