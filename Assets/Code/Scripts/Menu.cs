@@ -12,20 +12,25 @@ public class Menu : MonoBehaviour
     public static bool isOnMenu = true;
     private bool isMenuOpen = true;
 
+    /// <summary>
+    /// This method triggers the animation for the menu sidebar
+    /// Both values are true as the menu opens upon startup of the script
+    /// Once the player presses the shop button, it changes the boolean values.
+    /// This triggers the animation to close the menu sidebar
+    /// </summary>
     public void ToggleMenu() 
     {
         isMenuOpen = !isMenuOpen;
-        // Defines Boolean Value
-
+        
         isOnMenu = !isOnMenu;
-
+        
         anim.SetBool("MenuOpen", isMenuOpen && isOnMenu);
-        // Reassigns Boolean Value based on animation
+        
     }
 
     private void OnGUI() 
     {
-        currencyUI.text = LevelManager.main.currency.ToString();
         // Displays currency on Menu
+        currencyUI.text = LevelManager.main.currency.ToString();
     }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
-    public static LevelManager main; // This allows is to create a LevelManager class with specific properties
+    public static LevelManager main; // This allows me to create a LevelManager class with specific properties
     public Transform[] startPoint; // This will allow me to set a startpoint
     public Transform[] path; // This allows me to set the enemy path
 
@@ -16,28 +16,33 @@ public class LevelManager : MonoBehaviour
         main = this;
     }
 
-    private void Start() // sets currency and health points to 100 upon pressing play
+    // sets currency and health points to 100 upon pressing play
+    private void Start() 
     { 
-        currency = 2500;
-        healthPoints = 10;
+        currency = 4800;
+        healthPoints = 100;
     }
 
-    public void IncreaseCurrency(int amount) // Increase currency by the amount in the parameter
+    // Increase currency by the amount in the parameter
+    public void IncreaseCurrency(int amount) 
     { 
         currency += amount;
     }
 
-    public bool SpendCurrency(int amount) // This is takes a value from the players amount 
+    /// <summary>
+    /// This method takes the amount (cost) of a tower and deducts it from the players currency
+    /// </summary>
+    /// <param name="amount"></param>
+    /// <returns></returns>
+    public void SpendCurrency(int amount) // This function takes a value from the players amount 
     { 
         if (amount <= currency) 
         {
             currency -= amount;
-            return true;
         } 
         else 
         {
             Debug.Log("You do not have enough Stariam to purchase this item");
-            return false;
         }
     }
     

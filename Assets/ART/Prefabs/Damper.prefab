@@ -115,8 +115,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 713cdcbdd6fc0974aa9a330664fda05e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 500
-  currencyWorth: 250
+  hitPoints: 1
+  currencyWorth: 1000
+  deathSoundName: DamperDeath
 --- !u!50 &5560978251867537034
 Rigidbody2D:
   serializedVersion: 4

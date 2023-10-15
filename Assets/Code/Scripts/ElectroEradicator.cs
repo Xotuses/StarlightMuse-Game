@@ -12,13 +12,21 @@ public class ElectroEradicator : MonoBehaviour
     [SerializeField] private Transform firingPoint;
 
     [Header("Attribute")]
-    [SerializeField] private float targetingRange = 5f;
-    [SerializeField] private float rotationSpeed = 5f;
-    [SerializeField] private float bps = 1f; // Bullets per Second
+    [SerializeField] private float targetingRange;
+    [SerializeField] private float rotationSpeed;
+    [SerializeField] private float bps; // Bullets per Second
 
     private Transform target;
     private float timeUntilFire;
 
+    /// <summary>
+    /// This method operates the turret.
+    /// It searches for the target if there is no target.
+    /// It then rotates towards the target once found.
+    /// It then checks if it is in range.
+    /// It then tracks real time in the timeUntilFire variable
+    /// It then shoots and resets the variable, shooting everytime 1f/bps matches the timeUntilFire variable.
+    /// </summary>
     private void Update()
     {
         if (target == null)
@@ -26,14 +34,15 @@ public class ElectroEradicator : MonoBehaviour
             FindTarget();
             return;
         }
-
-        RotateTowardsTarget(); // This rotates the object towards the target
+        // This rotates the object towards the target
+        RotateTowardsTarget(); 
 
         if (!CheckTargetIsInRange()) 
         {
             target = null;
-        } else {
-
+        } 
+        else 
+        {
             timeUntilFire += Time.deltaTime;
 
             if (timeUntilFire >= 1f / bps) 
@@ -44,14 +53,23 @@ public class ElectroEradicator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This method shoots a bullet.
+    /// It does this by instantiating a bullet prefab at the firing point of the turret.
+    /// It then sets the bullets target to the target being prioritised by the FindTarget method.
+    /// </summary>
     private void Shoot() 
     {
         GameObject bulletObj = Instantiate(bulletPrefab, firingPoint.position, Quaternion.identity);
         Bullet bulletScript = bulletObj.GetComponent<Bullet>();
         bulletScript.SetTarget(target);
-        FindObjectOfType<AudioManager>().Play("NeuroSound");
     }
 
+    /// <summary>
+    /// This method finds the target using a raycast.
+    /// This is done by casting a ray in a circle area, this hits enemies once they enter the area.
+    /// It then priortises the first enemy hit and makes it the target.
+    /// </summary>
     private void FindTarget()
     {
         RaycastHit2D[] hits = Physics2D.CircleCastAll(transform.position, targetingRange, (Vector2) transform.position, 0f, enemyMask);
@@ -62,6 +80,10 @@ public class ElectroEradicator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This method checks if the target is within range of the towers targeting range.
+    /// </summary>
+    /// <returns> true or false </returns>
     private bool CheckTargetIsInRange() 
     {
         return Vector2.Distance(target.position, transform.position) <= targetingRange;

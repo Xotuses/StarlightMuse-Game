@@ -5,25 +5,37 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     [Header("Attributes")]
-    [SerializeField] private int hitPoints = 2;
-    [SerializeField] private int currencyWorth = 50; 
+    [SerializeField] private int hitPoints;
+    [SerializeField] private int currencyWorth;
+    [SerializeField] private string deathSoundName;
 
     private bool isDestroyed = false;
 
-    public void TakeDamage(int dmg) 
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <param name="dmg"></param>
+    public void TakeDamage(int dmg) // This allows enemies to take damage
     {
+        
         hitPoints -= dmg;
 
         if (hitPoints <= 0 && !isDestroyed) 
         {
+            // Tells EnemySpawner that an enemy is destroyed
             EnemySpawner.onEnemyDestroy.Invoke();
-            LevelManager.main.IncreaseCurrency(currencyWorth); // Increase the currency the player has by 50 when the enemy is destroyed
+
+            // Increase the currency the player has by the currencyWorth of the enemy
+            LevelManager.main.IncreaseCurrency(currencyWorth); 
+
+            FindObjectOfType<AudioManager>().Play(deathSoundName);
+
             isDestroyed = true;
             Destroy(gameObject); 
         }
     }
 
-    public void HealthDamage() 
+    public void HealthDamage() // This allows the player to take damage
     {
         LevelManager.healthPoints -= hitPoints;
     }

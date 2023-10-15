@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Starlight Muse.unity
     guid: 53e19d34a54a94f0db34f3040fc3d2b7
+  - enabled: 1
+    path: Assets/Scenes/Tips.unity
+    guid: 6b272de23e2a64344a39d93c53a3dbf3
   m_configObjects: {}

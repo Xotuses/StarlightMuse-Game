@@ -6,12 +6,19 @@ using UnityEngine.SceneManagement;
 public class LevelSelectionManager : MonoBehaviour
 {
     int sceneIndex;
-
+    
+    /// <summary>
+    /// This builds a scene index for the script to use
+    /// </summary>
     void Start()
     {
         sceneIndex = SceneManager.GetActiveScene().buildIndex;
         Debug.Log(sceneIndex);
     }
+
+    /// <summary>
+    /// This method allows the player to navigate back to the previous scene once they press the Escape key
+    /// </summary>
     void Update() 
     {
         if (Input.GetKeyDown(KeyCode.Escape)) // Takes the user back if they press escape
@@ -20,14 +27,19 @@ public class LevelSelectionManager : MonoBehaviour
         }
     }
 
-    public void GoBack() // Allows the user to go back to the previous scene
+    /// <summary>
+    /// Allows the user to go back to the previous scene
+    /// </summary>
+    public void GoBack() 
     {
         SceneManager.LoadScene(sceneIndex - 1);
     }
-
+    
+    /// <summary>
+    /// This allows the player to load the first level of the game.
+    /// </summary>
     public void LoadLevelOne() 
     {
-        Debug.Log("Loading");
         SceneManager.LoadScene(2);
     }
 }

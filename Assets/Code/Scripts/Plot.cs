@@ -13,11 +13,13 @@ public class Plot : MonoBehaviour
     private bool isMouseHovering = false;
     private int assignedRefundCost;
 
-    private void Start() 
+    // Assigns the default color to the plot 
+    private void Start()
     {
         startColor = sr.color;
     }
 
+    // Changes color once the mouse hovers over the plot
     private void OnMouseEnter() 
     {
         if (!PauseMenu.IsPaused && !ConditionsForGameplay.isOnVictoryScreen)
@@ -26,7 +28,8 @@ public class Plot : MonoBehaviour
             sr.color = hoverColor;
         }
     }
-
+    
+    // Changes color if once mouse has stopped hovering over the plot
     private void OnMouseExit() 
     {
         if (!PauseMenu.IsPaused && !ConditionsForGameplay.isOnVictoryScreen)
@@ -36,14 +39,21 @@ public class Plot : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// This method allows the player to place a tower if conditions are met.
+    /// The tower that is going to be built is assigned via the menu sidebar.
+    /// The method then spends the players currency, assigns a refund cost to the placed tower
+    /// Then instantiates the tower on the specfic plot.
+    /// </summary>
     private void OnMouseDown() 
     {
         if (!PauseMenu.IsPaused && !ConditionsForGameplay.isOnVictoryScreen)
         {
             if (!Menu.isOnMenu)
             {
-                if (tower != null) return;
                 // If a tower is already on the plot, do not build another one
+                if (tower != null) 
+                    return;
 
                 Tower towerToBuild = BuildManager.main.GetSelectedTower();
 
@@ -53,34 +63,37 @@ public class Plot : MonoBehaviour
                     return;
                 }
 
-                LevelManager.main.SpendCurrency(towerToBuild.cost);
                 // This will take the currency from the Level Manager
+                LevelManager.main.SpendCurrency(towerToBuild.cost);
 
-                assignedRefundCost = towerToBuild.refundCost;
                 // Assigns the refund cost to the "About to be placed" tower
+                assignedRefundCost = towerToBuild.refundCost;
 
-                tower = Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
                 // If the player meets all requirements, instantiate the towerToBuild
+                tower = Instantiate(towerToBuild.prefab, transform.position, Quaternion.identity);
             }
         }           
     }
 
-    private void Update() // This destroys tower on plot if there is a tower on hovered plot and refunds some of the spent currency
+    /// <summary>
+    /// This destroys tower on plot if there is a tower on hovered plot and refunds some of the spent currency.
+    /// If there are no menus or screens present, if the mouse is hovering over a tower and the D key is pressed
+    /// It will delete the tower, refunding currency.
+    /// </summary>
+    private void Update() 
     {
         if (!PauseMenu.IsPaused && !ConditionsForGameplay.isOnVictoryScreen)
         {
-            if (isMouseHovering)
+            if (isMouseHovering && (Input.GetKeyDown(KeyCode.D) && tower != null))
             {
-                if (Input.GetKeyDown(KeyCode.D) && tower != null)
-                {
-                    LevelManager.main.IncreaseCurrency(assignedRefundCost);
-                    Destroy(tower);
-                    tower = null;
-                }
+                LevelManager.main.IncreaseCurrency(assignedRefundCost);
+                Destroy(tower);
+                tower = null;
             }
         }
 
-        if (PauseMenu.IsPaused) // Makes all plots the start color when paused
+        // Makes all plots the start color when paused
+        if (PauseMenu.IsPaused) 
         {
             sr.color = startColor;
         }

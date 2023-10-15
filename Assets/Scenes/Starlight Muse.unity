@@ -653,12 +653,12 @@ MonoBehaviour:
     refundCost: 25
     prefab: {fileID: 4602729876275108803, guid: 280efd3641905434085ee1bc793e30d7, type: 3}
   - name: Bass Blaster
-    cost: 50
-    refundCost: 10
+    cost: 800
+    refundCost: 150
     prefab: {fileID: 7512973189829871791, guid: e7f25c97f9e958948a222be51fff823a, type: 3}
   - name: Electro Eradicator
-    cost: 150
-    refundCost: 40
+    cost: 300
+    refundCost: 70
     prefab: {fileID: 4602729876275108803, guid: 50f58b6861f17dd4382c5fe10132e644, type: 3}
 --- !u!114 &60614337
 MonoBehaviour:
@@ -784,6 +784,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0185860efb6ee8c4e9a314e596a5d309, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isCalledOnce: 0
   victoryScreen: {fileID: 1014023933}
   deathScreen: {fileID: 164666451}
 --- !u!1001 &63466306
@@ -11970,6 +11971,7 @@ GameObject:
   - component: {fileID: 1455823066}
   - component: {fileID: 1455823068}
   - component: {fileID: 1455823067}
+  - component: {fileID: 1455823069}
   m_Layer: 5
   m_Name: Stats
   m_TagString: Untagged
@@ -12038,6 +12040,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1455823065}
   m_CullTransparentMesh: 1
+--- !u!114 &1455823069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1455823065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354cb8981ff0c8a46a7d3f4683be7ed2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TotalHealthUI: {fileID: 1811394747}
+  TotalKillsUI: {fileID: 2122193288}
 --- !u!1001 &1470847730
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14264,6 +14280,7 @@ GameObject:
   - component: {fileID: 1733600454}
   - component: {fileID: 1733600456}
   - component: {fileID: 1733600455}
+  - component: {fileID: 1733600457}
   m_Layer: 5
   m_Name: Stats
   m_TagString: Untagged
@@ -14332,6 +14349,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1733600453}
   m_CullTransparentMesh: 1
+--- !u!114 &1733600457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733600453}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 354cb8981ff0c8a46a7d3f4683be7ed2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TotalHealthUI: {fileID: 525557023}
+  TotalKillsUI: {fileID: 2972392}
 --- !u!1 &1733846016
 GameObject:
   m_ObjectHideFlags: 0
@@ -16332,15 +16363,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: BassBlast
-    clip: {fileID: 8300000, guid: 843bef39f2f6e4c4985fc3a9466a1a5b, type: 3}
+  - name: NormalDeath
+    clip: {fileID: 8300000, guid: 00b9b769e270ec34884b9cd3848c303b, type: 3}
     volume: 0.5
     pitch: 1
     source: {fileID: 0}
-  - name: NeuroSound
+  - name: SpeedyDeath
+    clip: {fileID: 8300000, guid: ead00fdecde8d5f4a8643a721c726fc4, type: 3}
+    volume: 0.6
+    pitch: 1
+    source: {fileID: 0}
+  - name: AbnormalDeath
+    clip: {fileID: 8300000, guid: cb31558588eed874b931e72bf33009dc, type: 3}
+    volume: 0.6
+    pitch: 1
+    source: {fileID: 0}
+  - name: TankDeath
+    clip: {fileID: 8300000, guid: 1f6091743194bab4299e0a53e3ea417e, type: 3}
+    volume: 0.6
+    pitch: 1
+    source: {fileID: 0}
+  - name: HighCutDeath
     clip: {fileID: 8300000, guid: 55caba33a0285f24eb74f301431dd18b, type: 3}
     volume: 0.6
     pitch: 1
+    source: {fileID: 0}
+  - name: BandPassDeath
+    clip: {fileID: 8300000, guid: 55caba33a0285f24eb74f301431dd18b, type: 3}
+    volume: 0.6
+    pitch: 0.6
+    source: {fileID: 0}
+  - name: LowCutDeath
+    clip: {fileID: 8300000, guid: 55caba33a0285f24eb74f301431dd18b, type: 3}
+    volume: 0.6
+    pitch: 1.4
+    source: {fileID: 0}
+  - name: DamperDeath
+    clip: {fileID: 8300000, guid: 00b9b769e270ec34884b9cd3848c303b, type: 3}
+    volume: 0.6
+    pitch: 0.29
     source: {fileID: 0}
 --- !u!1 &1995009708
 GameObject:
@@ -17725,10 +17786,10 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1145468732}
   - {fileID: 1983469462}
   - {fileID: 60614338}
   - {fileID: 68461974}
-  - {fileID: 1145468732}
   - {fileID: 2010575934}
   - {fileID: 763190284}
   - {fileID: 1619835432}

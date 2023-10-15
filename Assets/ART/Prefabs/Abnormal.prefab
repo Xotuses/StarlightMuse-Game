@@ -116,8 +116,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints: 6
-  currencyWorth: 40
-  difficultyValue: 10
+  currencyWorth: 20
+  deathSoundName: AbnormalDeath
 --- !u!50 &5560978251867537034
 Rigidbody2D:
   serializedVersion: 4

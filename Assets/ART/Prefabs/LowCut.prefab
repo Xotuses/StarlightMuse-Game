@@ -116,7 +116,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPoints: 80
-  currencyWorth: 140
+  currencyWorth: 500
+  deathSoundName: LowCutDeath
 --- !u!50 &5560978251867537034
 Rigidbody2D:
   serializedVersion: 4

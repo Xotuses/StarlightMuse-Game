@@ -9,12 +9,19 @@ public class PauseMenu : MonoBehaviour
     public GameObject pausedMenu;
     public static bool IsPaused;
 
+    /// <summary>
+    /// This method sets the timeScale to default and turns off the pause menu
+    /// </summary>
     void Start()
     {
         pausedMenu.SetActive(false);
         Time.timeScale = 1f;
     }
 
+    /// <summary>
+    /// This method resumes the game if the player presses escape.
+    /// If the player presses escape while unpaused, it will pause the game.
+    /// </summary>
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape)) 
@@ -30,21 +37,30 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
-    public void PauseGame() // Pauses the game
+    /// <summary>
+    /// This method stops active processes running, pausing the game
+    /// </summary>
+    public void PauseGame() 
     {
         pausedMenu.SetActive(true);
         Time.timeScale = 0f;
         IsPaused = true;
     }
 
-    public void ResumeGame() // Resumes the game
+    /// <summary>
+    /// This method allows active processes to run again, unpausing the menu
+    /// </summary>
+    public void ResumeGame() 
     {
         pausedMenu.SetActive(false);
         Time.timeScale = 1f;
         IsPaused = false;
     }
 
-    public void QuitToStartingScreen() // Takes the player back to the starting screen
+    /// <summary>
+    /// This method takes the player back to the starting screen
+    /// </summary>
+    public void QuitToStartingScreen() 
     {
         IsPaused = false;
         SceneManager.LoadScene(0);
